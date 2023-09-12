@@ -21,15 +21,11 @@ install_docker() {
 
   # Install Docker Compose
   sudo ln -sfv /usr/libexec/docker/cli-plugins/docker-compose /usr/local/bin/docker-compose
-
-  # Allow current user to run Docker commands
-  sudo usermod -aG docker "$USER"
 }
 
 create_directories() {
   if [ ! -e "$REDASH_BASE_PATH" ]; then
     sudo mkdir -p "$REDASH_BASE_PATH"
-    sudo chown "$USER:" "$REDASH_BASE_PATH"
   fi
 
   if [ ! -e "$REDASH_BASE_PATH"/postgres-data ]; then
